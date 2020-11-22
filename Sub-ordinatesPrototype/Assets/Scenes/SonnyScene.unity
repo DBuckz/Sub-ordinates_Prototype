@@ -199,7 +199,11 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+<<<<<<< HEAD
   m_WasSpriteAssigned: 0
+=======
+  m_WasSpriteAssigned: 1
+>>>>>>> main
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &341201845
@@ -280,7 +284,11 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+<<<<<<< HEAD
   m_WasSpriteAssigned: 0
+=======
+  m_WasSpriteAssigned: 1
+>>>>>>> main
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &356737192
@@ -361,7 +369,11 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+<<<<<<< HEAD
   m_WasSpriteAssigned: 0
+=======
+  m_WasSpriteAssigned: 1
+>>>>>>> main
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &534608635
@@ -458,6 +470,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c607e6edc66f21a44a1a9d73cd2fa597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   rb: {fileID: 0}
   speed: 8
   jumpForce: 9
@@ -465,11 +478,22 @@ MonoBehaviour:
   isGroundedChecker: {fileID: 765702285}
   checkGroundRadius: 0.05
   groundLayer:
+=======
+  speed: 8
+  jumpForce: 9
+  isGroundedChecker: {fileID: 765702285}
+  checkGroundRadius: 0.05
+  groundLayer:
+    serializedVersion: 2
+>>>>>>> main
     m_Bits: 256
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
   rememberGroundedFor: 0.1
+<<<<<<< HEAD
   lastTimeGrounded: 0
+=======
+>>>>>>> main
 --- !u!1 &765702284
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +637,11 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+<<<<<<< HEAD
   m_WasSpriteAssigned: 0
+=======
+  m_WasSpriteAssigned: 1
+>>>>>>> main
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1343117883
@@ -723,7 +751,11 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+<<<<<<< HEAD
   m_WasSpriteAssigned: 0
+=======
+  m_WasSpriteAssigned: 1
+>>>>>>> main
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1343117887
@@ -927,6 +959,10 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+<<<<<<< HEAD
   m_WasSpriteAssigned: 0
+=======
+  m_WasSpriteAssigned: 1
+>>>>>>> main
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
