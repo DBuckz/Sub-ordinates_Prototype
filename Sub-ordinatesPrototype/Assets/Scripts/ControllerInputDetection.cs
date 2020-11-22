@@ -5,7 +5,7 @@ using UnityEngine;
 public class ControllerInputDetection : MonoBehaviour
 {
 
-    private Vector3 _movement = Vector3.zero;
+    private Vector2 _movement = Vector2.zero;
     private string _xAxis, _yAxis;
     public float speed;
 
@@ -18,7 +18,7 @@ public class ControllerInputDetection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _movement = new Vector3(Input.GetAxisRaw(_xAxis), 0, Input.GetAxisRaw(_yAxis));
+        _movement = new Vector2(Input.GetAxisRaw(_xAxis), Input.GetAxisRaw(_yAxis));
         Debug.Log(_movement);
        
     }
