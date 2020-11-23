@@ -19,7 +19,11 @@ public class ControllerInputDetection : MonoBehaviour
     void Update()
     {
         _movement = new Vector2(Input.GetAxisRaw(_xAxis), Input.GetAxisRaw(_yAxis));
-        Debug.Log(_movement);
+        if(Input.GetButtonDown("Submit"))
+        {
+Debug.Log(_movement);
+        }
+        
        
     }
 
