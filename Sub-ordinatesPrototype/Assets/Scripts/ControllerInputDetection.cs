@@ -22,6 +22,12 @@ public class ControllerInputDetection : MonoBehaviour
         if(Input.GetButtonDown("Submit"))
         {
 Debug.Log(_movement);
+
+
+            if ( _movement== new Vector2(1, 0))
+            {
+                Debug.Log("front strike" );
+            }
         }
         
        
