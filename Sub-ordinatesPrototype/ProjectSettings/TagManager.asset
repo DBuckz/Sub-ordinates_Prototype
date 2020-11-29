@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Proj2
+  - Proj1
   layers:
   - Default
   - TransparentFX

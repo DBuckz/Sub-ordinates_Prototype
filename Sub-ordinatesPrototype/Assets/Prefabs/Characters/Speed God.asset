@@ -14,13 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 2
   deity: 1
-  health: 400
+  health: 300
   speed: 14
-  jumpForce: 12
+  jumpForce: 13
   jumps: 2
   attack: 25
   attackRate: 2
-  block: 55
-  characterSprite: {fileID: 0}
+  block: 0.5
+  characterSprite: {fileID: -4468780743378979911, guid: 4846be2517a552e45a286482b6b1d4d5,
+    type: 3}
   attackSprite: {fileID: 0}
   animations: []
