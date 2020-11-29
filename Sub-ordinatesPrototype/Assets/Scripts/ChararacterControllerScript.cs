@@ -32,37 +32,60 @@ public class ChararacterControllerScript : MonoBehaviour
     public TeamController teamController;
 
     public Characters character;
+    public ChararacterControllerScript enemy;
+    public GameObject rangeAttack;
+
+    bool dashOverride = false;
+    bool blocking = false;
+    string projTag;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         character = teamController.chars[teamController.selected];
+        speed = character.speed;
+        jumpForce = character.jumpForce;
+        spriteRend.sprite = character.characterSprite;
+    }
+
+    public void Changed(Characters newChar)
+    {
+        character = newChar;
+        speed = character.speed;
+        jumpForce = character.jumpForce;
+        spriteRend.sprite = character.characterSprite;
     }
 
 
     void Update()
     {
+        blocking = false;
         HorizontalInput = Input.GetAxis("Horizontal" + player);
         VerticalInput = Input.GetAxis("Vertical" + player);
         A = Input.GetButton("Jump" + player);
         B = Input.GetButton("Block" + player);
-        X = Input.GetButton("Attack" + player);
-        Y = Input.GetButton("Ult" + player);
-        P = Input.GetButton("SwitchP" + player);
-        N = Input.GetButton("SwitchN" + player);
+        X = Input.GetButtonDown("Attack" + player);
+        Y = Input.GetButtonDown("Ult" + player);
+        P = Input.GetButtonDown("SwitchP" + player);
+        N = Input.GetButtonDown("SwitchN" + player);
+        projTag = "Proj" + player;
 
+        Block();
         Move();
         Jump();
         BetterJump();
         CheckIfGrounded();
         Attack();
-        Block();
         Switch();
         Ult();
     }
     void Move()
     {
+        if (dashOverride) return;
+
+
         float moveBy = HorizontalInput * speed;
+        if (blocking) moveBy = 0 ;
         rb.velocity = new Vector2(moveBy, rb.velocity.y);
 
         if(rb.velocity.x > 0)
@@ -80,7 +103,7 @@ public class ChararacterControllerScript : MonoBehaviour
         
         if (A && (isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor) && rb.velocity.y==0)
         {
-            spriteRend.color = Color.red;
+            //spriteRend.color = Color.red;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
@@ -121,31 +144,103 @@ public class ChararacterControllerScript : MonoBehaviour
 
     void Attack()
     {
-        if (X) spriteRend.color = Color.green;
+        if (X)
+        {
+            if (character.type == 0)
+            {
+                if (HorizontalInput == 0 && VerticalInput == 0) HorizontalInput = transform.localScale.x;
+                RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, new Vector2(HorizontalInput, VerticalInput), 1, LayerMask.GetMask("Player"));
+                if (hit.Length > 1)
+                {
+                    enemy.Hurt(character.attack);
+                }
+            }
+            else if(character.type == 1)
+            {
+                if (HorizontalInput == 0 && VerticalInput == 0) HorizontalInput = transform.localScale.x;
+                GameObject proj = Instantiate(rangeAttack, transform.position, Quaternion.Euler(0,0,-90+Mathf.Rad2Deg*Mathf.Atan2(VerticalInput, HorizontalInput)));
+                proj.name = character.attack.ToString();
+                proj.tag = projTag;
+                Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
+                rb.AddForce(proj.transform.up * 10, ForceMode2D.Impulse);
+                Destroy(proj, 5f);
 
+            }
+            else if(character.type == 2)
+            {
+                dashOverride = true;
+                Vector2 start = transform.position;
+                StartCoroutine(DashWait(start));
 
+                if (HorizontalInput == 0 && VerticalInput == 0) HorizontalInput = transform.localScale.x;
+                rb.velocity = new Vector2(HorizontalInput, VerticalInput*0.7f) * 35;
+                
 
+            }
 
+        }
+
+    }
+
+    IEnumerator DashWait(Vector2 start)
+    {
+        yield return new WaitForSeconds(0.15f);
+        RaycastHit2D[] colliders = Physics2D.LinecastAll(start, transform.position, LayerMask.GetMask("Player"));
+        if (colliders.Length > 1)
+        {
+            enemy.Hurt(character.attack);
+        }
+        dashOverride = false;
 
     }
 
     void Switch()
     {
-        if(P || N) spriteRend.color = Color.blue;
+        if ((P || N ) && teamController.deadCount < 2)
+        {
+            int dir = 0;
+            if (P) dir = -1;
+            else if (N) dir = 1;
+
+            teamController.NewChar(dir);
+        }
+
     }
 
     void Block()
     {
-        if(B) spriteRend.color = Color.yellow;
+        if (B)
+        {
+            //spriteRend.color = Color.yellow;
+            blocking = true;
+        }
     }
 
     void Ult()
     {
-        if(Y) spriteRend.color = Color.white;
+        //if(Y) spriteRend.color = Color.white;
     }
 
     public void Hurt(int dmg)
     {
+        if (dashOverride) return;
+        if (blocking)
+        {
+            float newDmg = dmg * (1 - character.block);
+            dmg = Mathf.RoundToInt(newDmg);
+            Debug.Log(dmg);
+        }
         teamController.Hurt(dmg);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Proj1" || collision.tag == "Proj2")
+        {
+            if(collision.tag != projTag)
+            {
+                Hurt(int.Parse(collision.name));
+            }
+        }
     }
 }

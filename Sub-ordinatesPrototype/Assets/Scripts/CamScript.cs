@@ -21,13 +21,13 @@ public class CamScript : MonoBehaviour
         Vector3 pos = 0.5f * (players[0].transform.position + players[1].transform.position);
         pos = new Vector3(pos.x, pos.y, transform.position.z);
         transform.position = pos;
-        if(Vector2.Distance(players[0].transform.position, players[1].transform.position) > 8)
+        if(Vector2.Distance(players[0].transform.position, players[1].transform.position) > 4)
         {
-            GetComponent<Camera>().orthographicSize = 5 + 0.25f* (Vector2.Distance(players[0].transform.position, players[1].transform.position) - 8);
+            GetComponent<Camera>().orthographicSize = 4 + 0.25f* (Vector2.Distance(players[0].transform.position, players[1].transform.position) - 4);
         }
         else
         {
-            GetComponent<Camera>().orthographicSize = 5;
+            GetComponent<Camera>().orthographicSize = 4;
         }
     }
 }

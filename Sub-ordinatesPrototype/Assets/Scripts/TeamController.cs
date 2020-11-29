@@ -10,15 +10,42 @@ public class TeamController : MonoBehaviour
     public int player;
     public int selected;
 
+    public int[] health;
+
+    public bool[] dead;
+    public int deadCount;
+
+    public ChararacterControllerScript playerScript;
+    public Transform spawn;
+
+    private void Start()
+    {
+        for(int i = 0; i< 3; i++)
+        {
+            health[i] = chars[i].health;
+        }
+        NewChar(0);
+    }
 
     public void NewChar(int dir)
     {
         selected += dir;
         if (selected > 2) selected = 0;
+        if (selected < 0) selected = 2;
 
-        foreach(GameObject character in characters)
+        while (dead[selected])
         {
-            if(character == characters[dir])
+            selected += dir;
+            if (selected > 2) selected = 0;
+            if (selected < 0) selected = 2;
+        }
+
+        playerScript.Changed(chars[selected]);
+        //playerScript.character = chars[selected];
+
+        foreach (GameObject character in characters)
+        {
+            if(character == characters[selected])
             {
                 character.transform.localScale = new Vector3(1, 1, 1);
             }
@@ -26,8 +53,20 @@ public class TeamController : MonoBehaviour
         }
     }
 
-    public void Hurt(int health)
+    public void Hurt(int dmg)
     {
-        characters[selected].GetComponent<Image>().fillAmount = (health / chars[selected].health);
+        health[selected] -= dmg;
+        if (health[selected] <= 0)
+        {
+            health[selected] = 0;
+            dead[selected] = true;
+            deadCount++;
+        }
+        characters[selected].transform.GetChild(0).GetComponent<Image>().fillAmount = (health[selected] / (float)chars[selected].health);
+        if (dead[selected] && deadCount < 3)
+        {
+            NewChar(1);
+            playerScript.transform.position = spawn.position;
+        }
     }
 }

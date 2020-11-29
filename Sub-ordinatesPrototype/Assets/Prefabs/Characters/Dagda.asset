@@ -16,11 +16,12 @@ MonoBehaviour:
   deity: 1
   health: 400
   speed: 7
-  jumpForce: 8
+  jumpForce: 11
   jumps: 1
-  attack: 65
+  attack: 75
   attackRate: 2
-  block: 75
-  characterSprite: {fileID: 0}
+  block: 0.8
+  characterSprite: {fileID: 4895055797721914116, guid: d31c39cce534fd54596ee512852a7352,
+    type: 3}
   attackSprite: {fileID: 0}
   animations: []
