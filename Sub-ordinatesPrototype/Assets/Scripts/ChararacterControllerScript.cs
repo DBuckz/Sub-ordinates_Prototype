@@ -18,8 +18,29 @@ public class ChararacterControllerScript : MonoBehaviour
     public float rememberGroundedFor;
     float lastTimeGrounded;
 
+
+    //attempt at multi controller variables
+    public ControllerInputDetection input { get; private set; }
+    public Player player { get; private set; }
+    int playerNumber;
+    public PlayerNum id;
+    private string _xAxis, _yAxis, Abutton;
     void Start()
     {
+
+
+        if (id == PlayerNum.p1)
+        {
+            _xAxis = "Horizontal";
+            _yAxis = "Vertical";
+            Abutton = "Submit";
+        }
+        if (id == PlayerNum.p2)
+        {
+            _xAxis = "Horizontal2";
+            _yAxis = "Vertical2";
+            Abutton = "Submit2";
+        }
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -34,7 +55,7 @@ public class ChararacterControllerScript : MonoBehaviour
     }
     void Move()
     {
-        float x = Input.GetAxisRaw("Horizontal");
+        float x = Input.GetAxisRaw(_xAxis);
         float moveBy = x * speed;
         rb.velocity = new Vector2(moveBy, rb.velocity.y);
 
@@ -50,7 +71,7 @@ public class ChararacterControllerScript : MonoBehaviour
 
     void Jump()
     {
-        if (Input.GetAxisRaw("Vertical") > 0 && (isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor))
+        if (Input.GetAxisRaw(_yAxis) > 0 && (isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor))
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
@@ -98,5 +119,19 @@ public class ChararacterControllerScript : MonoBehaviour
     void Switch()
     {
 
+    }
+
+   
+    public void SetPlayer(Player player)
+    {
+        this.player = player;
+       playerNumber = player.playerNumber;
+        input = player.GetComponent<ControllerInputDetection>();
+    }
+
+    public enum PlayerNum
+    {
+        p1,
+        p2
     }
 }
