@@ -255,7 +255,7 @@ GameObject:
   - component: {fileID: 853000338152983139}
   - component: {fileID: 853000338152983138}
   - component: {fileID: 853000338152983137}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Character 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,6 +348,8 @@ MonoBehaviour:
   fallMultiplier: 2.5
   lowJumpMultiplier: 2
   rememberGroundedFor: 0.1
+  player: 0
+  spriteRend: {fileID: 0}
 --- !u!1 &853000338313809974
 GameObject:
   m_ObjectHideFlags: 0
