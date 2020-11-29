@@ -18,40 +18,69 @@ public class ChararacterControllerScript : MonoBehaviour
     public float rememberGroundedFor;
     float lastTimeGrounded;
 
+    public int player;
+    float VerticalInput;
+    float HorizontalInput;
+    bool A;
+    bool B;
+    bool X;
+    bool Y;
+    bool P;
+    bool N;
+
+    public SpriteRenderer spriteRend;
+    public TeamController teamController;
+
+    public Characters character;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        character = teamController.chars[teamController.selected];
     }
 
 
     void Update()
     {
+        HorizontalInput = Input.GetAxis("Horizontal" + player);
+        VerticalInput = Input.GetAxis("Vertical" + player);
+        A = Input.GetButton("Jump" + player);
+        B = Input.GetButton("Block" + player);
+        X = Input.GetButton("Attack" + player);
+        Y = Input.GetButton("Ult" + player);
+        P = Input.GetButton("SwitchP" + player);
+        N = Input.GetButton("SwitchN" + player);
+
         Move();
         Jump();
         BetterJump();
         CheckIfGrounded();
         Attack();
+        Block();
+        Switch();
+        Ult();
     }
     void Move()
     {
-        float x = Input.GetAxisRaw("Horizontal");
-        float moveBy = x * speed;
+        float moveBy = HorizontalInput * speed;
         rb.velocity = new Vector2(moveBy, rb.velocity.y);
 
         if(rb.velocity.x > 0)
         {
-            Turn();
+            Turn(1);
         }
         else if(rb.velocity.x < 0)
         {
-            Turn();
+            Turn(-1);
         }
     }
 
     void Jump()
     {
-        if (Input.GetAxisRaw("Vertical") > 0 && (isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor))
+        
+        if (A && (isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor) && rb.velocity.y==0)
         {
+            spriteRend.color = Color.red;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
     }
@@ -79,24 +108,44 @@ public class ChararacterControllerScript : MonoBehaviour
         {
             rb.velocity += Vector2.up * Physics2D.gravity * (fallMultiplier - 1) * Time.deltaTime;
         }
-        else if (rb.velocity.y > 0 && !Input.GetKey(KeyCode.Space))
+        else if (rb.velocity.y > 0 && !A)
         {
             rb.velocity += Vector2.up * Physics2D.gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
     }
 
-    void Turn()
+    void Turn(int dir)
     {
-
+        gameObject.transform.localScale = new Vector3(dir, 1, 1);
     }
 
     void Attack()
     {
+        if (X) spriteRend.color = Color.green;
+
+
+
+
 
     }
 
     void Switch()
     {
+        if(P || N) spriteRend.color = Color.blue;
+    }
 
+    void Block()
+    {
+        if(B) spriteRend.color = Color.yellow;
+    }
+
+    void Ult()
+    {
+        if(Y) spriteRend.color = Color.white;
+    }
+
+    public void Hurt(int dmg)
+    {
+        teamController.Hurt(dmg);
     }
 }
