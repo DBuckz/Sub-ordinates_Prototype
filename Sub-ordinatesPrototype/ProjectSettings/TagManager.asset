@@ -9,6 +9,8 @@ TagManager:
   - Controls
   - Exit
   - Back
+  - Proj2
+  - Proj1
   layers:
   - Default
   - TransparentFX
