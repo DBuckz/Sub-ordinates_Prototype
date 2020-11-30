@@ -20,6 +20,10 @@ public class TeamController : MonoBehaviour
 
     private void Start()
     {
+
+
+
+
         for(int i = 0; i< 3; i++)
         {
             health[i] = chars[i].health;
@@ -67,6 +71,11 @@ public class TeamController : MonoBehaviour
             health[selected] = 0;
             dead[selected] = true;
             deadCount++;
+            if (chars[selected].deity)
+            {
+                //End();
+            }
+            if (deadCount == 3) End();
         }
         characters[selected].transform.GetChild(0).GetComponent<Image>().fillAmount = (health[selected] / (float)chars[selected].health);
         if (dead[selected] && deadCount < 3)
@@ -74,5 +83,10 @@ public class TeamController : MonoBehaviour
             NewChar(1, true);
             playerScript.transform.position = spawn.position;
         }
+    }
+
+    public void End()
+    {
+        InfoCarry.infoCarry.End();
     }
 }
