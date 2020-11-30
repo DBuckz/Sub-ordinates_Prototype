@@ -16,7 +16,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2042962295293919834
 Transform:
   m_ObjectHideFlags: 0
@@ -188,12 +188,18 @@ MonoBehaviour:
   lowJumpMultiplier: 2
   rememberGroundedFor: 0.1
   player: 1
-  spriteRend: {fileID: 0}
+  spriteRend: {fileID: 8698307370457531783}
   teamController: {fileID: 0}
   character: {fileID: 0}
   enemy: {fileID: 0}
   rangeAttack: {fileID: 5787070106245674172, guid: 9cf4e146b38504842ae160c0f21cf84c,
     type: 3}
+  switchCool: 8
+  cooldowns:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  attackCount: {fileID: 0}
 --- !u!58 &6235349588378191432
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -340,7 +346,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1000
   m_Sprite: {fileID: 4895055797721914116, guid: d31c39cce534fd54596ee512852a7352,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

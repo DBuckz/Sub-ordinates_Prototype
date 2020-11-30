@@ -16,6 +16,8 @@ public class Characters : ScriptableObject
     public int attack;
     public float attackRate;
     public float block;
+    public int meleeStore;
+    public float blockWait;
 
     public Sprite characterSprite;
     public Sprite attackSprite;
