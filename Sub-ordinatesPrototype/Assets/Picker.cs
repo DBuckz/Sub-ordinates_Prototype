@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Picker : MonoBehaviour
 {
@@ -12,9 +13,15 @@ public class Picker : MonoBehaviour
     static bool cSelected, gSelected, jSelected;
    public TeamManager team;
     public float VerticalInput;
+    public bool picked;
+
+    public Image[] images;
+   
+    public Sprite[] Celts,greeks,japan;
+    
     void Start()
     {
-       
+      
     }
 
     // Update is called once per frame
@@ -59,21 +66,32 @@ public class Picker : MonoBehaviour
                     //celt
                   
                     team.team[0]=player;
-                   
+                    images[0].sprite = Celts[0];
+                    images[1].sprite = Celts[1];
+                    images[2].sprite = Celts[2];
+                    picked = true;
+
                 }
                 if (i == 2 && team.team[1] == 0)
                 {
                     //greek
                     
                     team.team[1] = player;
-                  
+                    images[0].sprite = greeks[0];
+                    images[1].sprite = greeks[1];
+                    images[2].sprite = greeks[2];
+                    picked = true;
+
                 }
                 if (i == 3 && team.team[2] == 0)
                 {
                     //japan
                    
                     team.team[2] = player;
-                  
+                    images[0].sprite = japan[0];
+                    images[1].sprite = japan[1];
+                    images[2].sprite = japan[2];
+                    picked = true;
                 }
                 team.Fucksion(player, i-1);
             }

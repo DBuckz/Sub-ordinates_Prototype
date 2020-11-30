@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class TeamManager : MonoBehaviour
 {
     public int[] team;
     Picker playerNumber;
     bool A;
-
+    public Picker p1, p2;
+    bool X1,X2;
     void Start()
     {
         
@@ -17,46 +18,18 @@ public class TeamManager : MonoBehaviour
     void Update()
     {
 
+        X1 =Input.GetButtonDown( "Attack1");
+        X2 = Input.GetButtonDown("Attack2");
+        if (X1 || X2)
+        {
+            if(p1.picked && p2.picked)
+            {
+                SceneManager.LoadScene(1);
+            }
+        }
         
         
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

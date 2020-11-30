@@ -734,7 +734,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Fight
+  m_Text: Press 'X' to FIGHT
 --- !u!222 &336955295
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -758,7 +758,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &368649091
 RectTransform:
   m_ObjectHideFlags: 0
@@ -916,7 +916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.33333334, b: 0.33333334, a: 1}
+  m_Color: {r: 0.8039216, g: 0, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -957,8 +957,25 @@ MonoBehaviour:
   greek: {fileID: 1456556211}
   japanese: {fileID: 1787604736}
   player: 2
-  team: {fileID: 0}
+  team: {fileID: 1292309595}
   VerticalInput: 0
+  picked: 0
+  images:
+  - {fileID: 907433746}
+  - {fileID: 1092982752}
+  - {fileID: 1232870690}
+  Celts:
+  - {fileID: 4895055797721914116, guid: d31c39cce534fd54596ee512852a7352, type: 3}
+  - {fileID: 7482667652216324306, guid: 26b781d8834ff8c449932e211eeb8f53, type: 3}
+  - {fileID: 7482667652216324306, guid: 26b781d8834ff8c449932e211eeb8f53, type: 3}
+  greeks:
+  - {fileID: 7482667652216324306, guid: 26b781d8834ff8c449932e211eeb8f53, type: 3}
+  - {fileID: -9095803727545094535, guid: 21c09336646a53f4ab49cb83d78451a7, type: 3}
+  - {fileID: 7482667652216324306, guid: 26b781d8834ff8c449932e211eeb8f53, type: 3}
+  japan:
+  - {fileID: 7482667652216324306, guid: 26b781d8834ff8c449932e211eeb8f53, type: 3}
+  - {fileID: 7482667652216324306, guid: 26b781d8834ff8c449932e211eeb8f53, type: 3}
+  - {fileID: -4468780743378979911, guid: 4846be2517a552e45a286482b6b1d4d5, type: 3}
 --- !u!1 &557770975
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,7 +1107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23113209, g: 0.3222479, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.10849059, b: 0.1349491, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1245,7 +1262,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.33490568, b: 0.33490568, a: 1}
+  m_Color: {r: 0.8039216, g: 0, b: 1, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1363,7 +1380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.23137257, g: 0.32156864, b: 1, a: 1}
+  m_Color: {r: 1, g: 0, b: 0.018810749, a: 1}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1406,6 +1423,23 @@ MonoBehaviour:
   player: 1
   team: {fileID: 1292309595}
   VerticalInput: 0
+  picked: 0
+  images:
+  - {fileID: 1759121568}
+  - {fileID: 1057550992}
+  - {fileID: 1703204297}
+  Celts:
+  - {fileID: 4895055797721914116, guid: d31c39cce534fd54596ee512852a7352, type: 3}
+  - {fileID: 7482667652216324306, guid: 26b781d8834ff8c449932e211eeb8f53, type: 3}
+  - {fileID: 7482667652216324306, guid: 26b781d8834ff8c449932e211eeb8f53, type: 3}
+  greeks:
+  - {fileID: 7482667652216324306, guid: 26b781d8834ff8c449932e211eeb8f53, type: 3}
+  - {fileID: -9095803727545094535, guid: 21c09336646a53f4ab49cb83d78451a7, type: 3}
+  - {fileID: 7482667652216324306, guid: 26b781d8834ff8c449932e211eeb8f53, type: 3}
+  japan:
+  - {fileID: 7482667652216324306, guid: 26b781d8834ff8c449932e211eeb8f53, type: 3}
+  - {fileID: 7482667652216324306, guid: 26b781d8834ff8c449932e211eeb8f53, type: 3}
+  - {fileID: -4468780743378979911, guid: 4846be2517a552e45a286482b6b1d4d5, type: 3}
 --- !u!1 &817368323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1890,15 +1924,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 898523690}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.3, y: 0.6138222, z: 416.8781}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 148.5, y: 27.622, z: 14709.515}
+  m_LocalScale: {x: 45, y: 45, z: 45}
   m_Children:
   - {fileID: 2076324628}
   - {fileID: 1456556211}
   - {fileID: 1787604736}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1974272875}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &907433744
 GameObject:
@@ -2437,6 +2471,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   team: 000000000000000000000000
+  p1: {fileID: 812535551}
+  p2: {fileID: 515192651}
 --- !u!1 &1337938330
 GameObject:
   m_ObjectHideFlags: 0
@@ -3579,7 +3615,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Back
+  m_Text: Press 'B' to return
 --- !u!222 &1961009616
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3760,7 +3796,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1974272875
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3780,6 +3816,7 @@ RectTransform:
   - {fileID: 754448376}
   - {fileID: 1292309594}
   - {fileID: 948436437}
+  - {fileID: 898523691}
   m_Father: {fileID: 833789847}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
