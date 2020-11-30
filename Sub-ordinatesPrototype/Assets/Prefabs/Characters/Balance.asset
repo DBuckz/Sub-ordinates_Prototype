@@ -14,13 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   deity: 0
-  health: 300
+  health: 250
   speed: 8
-  jumpForce: 10
+  jumpForce: 12
   jumps: 1
   attack: 35
   attackRate: 2
-  block: 50
+  block: 0.6
+  meleeStore: 2
+  blockWait: 0
   characterSprite: {fileID: 0}
   attackSprite: {fileID: 0}
   animations: []

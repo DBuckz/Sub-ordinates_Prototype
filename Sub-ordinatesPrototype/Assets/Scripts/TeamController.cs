@@ -24,10 +24,16 @@ public class TeamController : MonoBehaviour
         {
             health[i] = chars[i].health;
         }
-        NewChar(0);
+        Invoke("Wait", 0.04f);
     }
 
-    public void NewChar(int dir)
+    public void Wait()
+    {
+
+        NewChar(0, false);
+    }
+
+    public void NewChar(int dir, bool death)
     {
         selected += dir;
         if (selected > 2) selected = 0;
@@ -40,7 +46,7 @@ public class TeamController : MonoBehaviour
             if (selected < 0) selected = 2;
         }
 
-        playerScript.Changed(chars[selected]);
+        playerScript.Changed(chars[selected], death);
         //playerScript.character = chars[selected];
 
         foreach (GameObject character in characters)
@@ -65,7 +71,7 @@ public class TeamController : MonoBehaviour
         characters[selected].transform.GetChild(0).GetComponent<Image>().fillAmount = (health[selected] / (float)chars[selected].health);
         if (dead[selected] && deadCount < 3)
         {
-            NewChar(1);
+            NewChar(1, true);
             playerScript.transform.position = spawn.position;
         }
     }
