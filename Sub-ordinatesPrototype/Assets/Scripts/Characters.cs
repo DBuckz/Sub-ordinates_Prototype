@@ -21,9 +21,10 @@ public class Characters : ScriptableObject
 
     public Sprite characterSprite;
     public Sprite attackSprite;
-    public Animation[] animations;
+    public AnimationClip[] animations;
 
 
+    
 
 
 }

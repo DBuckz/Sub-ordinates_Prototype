@@ -64,6 +64,8 @@ public class ChararacterControllerScript : MonoBehaviour
     public Image[] cooldowns;
     public Text attackCount;
 
+    public Animation moves;
+    public Characters anim;
 
     void Start()
     {
@@ -289,6 +291,8 @@ public class ChararacterControllerScript : MonoBehaviour
     {
         if (X && meleeStore > 0 && !blocking)
         {
+            //moves.Play(anim.animations);
+          //  moves.Play()+anim.animations[0].play();
             if (character.type == 0)
             {
                 if (HorizontalInput == 0 && VerticalInput == 0) HorizontalInput = transform.localScale.x;

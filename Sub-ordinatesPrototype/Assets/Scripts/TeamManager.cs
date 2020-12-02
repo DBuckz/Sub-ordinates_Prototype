@@ -35,6 +35,7 @@ public class TeamManager : MonoBehaviour
         {
             choose.SetActive(false);
             menu.SetActive(true);
+           
         }
         
     }

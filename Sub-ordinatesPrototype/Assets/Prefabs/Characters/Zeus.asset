@@ -26,4 +26,8 @@ MonoBehaviour:
   characterSprite: {fileID: -9095803727545094535, guid: 21c09336646a53f4ab49cb83d78451a7,
     type: 3}
   attackSprite: {fileID: 0}
-  animations: []
+  animations:
+  - {fileID: 7400000, guid: c2a840a839394c4488702bdd3ea9948a, type: 2}
+  - {fileID: 7400000, guid: 388f1879fd5227f4b8fe529b257096b4, type: 2}
+  - {fileID: 7400000, guid: 8fab366198667a242a287cf238285313, type: 2}
+  - {fileID: 7400000, guid: 8fab366198667a242a287cf238285313, type: 2}
