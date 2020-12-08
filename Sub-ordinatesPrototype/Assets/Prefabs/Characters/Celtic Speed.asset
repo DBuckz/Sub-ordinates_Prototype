@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59e01b8d6d5715b478a9b93a3910eccc, type: 3}
-  m_Name: Speed God
+  m_Name: Celtic Speed
   m_EditorClassIdentifier: 
   type: 2
-  deity: 1
+  deity: 0
   health: 35
   speed: 11
   jumpForce: 13
   jumps: 2
-  attack: 5
+  attack: 4
   attackRate: 0.7
   block: 0.65
   meleeStore: 2

@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 59e01b8d6d5715b478a9b93a3910eccc, type: 3}
-  m_Name: Speed God
+  m_Name: Celtic Range
   m_EditorClassIdentifier: 
-  type: 2
+  type: 1
   deity: 1
-  health: 35
-  speed: 11
-  jumpForce: 13
-  jumps: 2
-  attack: 5
-  attackRate: 0.7
-  block: 0.65
-  meleeStore: 2
+  health: 20
+  speed: 8
+  jumpForce: 12
+  jumps: 1
+  attack: 4
+  attackRate: 1.1
+  block: 0.5
+  meleeStore: 8
   blockWait: 2
-  characterSprite: {fileID: -4468780743378979911, guid: 4846be2517a552e45a286482b6b1d4d5,
+  characterSprite: {fileID: -9095803727545094535, guid: 21c09336646a53f4ab49cb83d78451a7,
     type: 3}
   attackSprite: {fileID: 0}
   animations: []

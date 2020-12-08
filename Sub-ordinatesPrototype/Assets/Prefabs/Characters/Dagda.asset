@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   deity: 1
-  health: 500
+  health: 50
   speed: 6
   jumpForce: 11
   jumps: 1
-  attack: 85
+  attack: 8
   attackRate: 2.5
   block: 0.9
   meleeStore: 1
