@@ -23,7 +23,6 @@ MonoBehaviour:
   block: 0.9
   meleeStore: 1
   blockWait: 2
-  characterSprite: {fileID: 4895055797721914116, guid: d31c39cce534fd54596ee512852a7352,
-    type: 3}
+  characterSprite: {fileID: 21300000, guid: e663dd0188a26f7418c3ab9f20e72292, type: 3}
   attackSprite: {fileID: 0}
   animations: []
