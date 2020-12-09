@@ -2044,6 +2044,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e9b9da353585f5b49af2c40c54a83418, type: 2}
   - {fileID: 11400000, guid: 31de89c2be81d45499a3903dea173d39, type: 2}
   - {fileID: 11400000, guid: cbd358b15287a914d884fd2307653640, type: 2}
+  celts:
+  - {fileID: 11400000, guid: e9b9da353585f5b49af2c40c54a83418, type: 2}
+  - {fileID: 11400000, guid: 793a2de91171b0b48a467b32e20c83dc, type: 2}
+  - {fileID: 11400000, guid: f4fdf5a470baa214cbe9e989c4ffc6d1, type: 2}
+  greek:
+  - {fileID: 11400000, guid: de438b1e4fade8c47b99ab164ba73d9d, type: 2}
+  - {fileID: 11400000, guid: 31de89c2be81d45499a3903dea173d39, type: 2}
+  - {fileID: 11400000, guid: 82f9cf39b80f80841bc34afa2d1e37ca, type: 2}
+  japanese:
+  - {fileID: 11400000, guid: aaa9b0ddcdf14d3408cf862f80f94fb1, type: 2}
+  - {fileID: 11400000, guid: ec581f52acdb9d64589b360c43434d22, type: 2}
+  - {fileID: 11400000, guid: cbd358b15287a914d884fd2307653640, type: 2}
   player: 2
   selected: 0
   health: 000000000000000000000000
@@ -2051,6 +2063,7 @@ MonoBehaviour:
   deadCount: 0
   playerScript: {fileID: 2042962296257825917}
   spawn: {fileID: 970643521}
+  teamSelected: 0
 --- !u!1 &875483209
 GameObject:
   m_ObjectHideFlags: 0
@@ -27095,7 +27108,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -1.5, y: 34.4}
+  m_AnchoredPosition: {x: -1.5, y: 34.399994}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 0}
 --- !u!1 &2073369915
@@ -27271,6 +27284,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e9b9da353585f5b49af2c40c54a83418, type: 2}
   - {fileID: 11400000, guid: 31de89c2be81d45499a3903dea173d39, type: 2}
   - {fileID: 11400000, guid: cbd358b15287a914d884fd2307653640, type: 2}
+  celts:
+  - {fileID: 11400000, guid: e9b9da353585f5b49af2c40c54a83418, type: 2}
+  - {fileID: 11400000, guid: 793a2de91171b0b48a467b32e20c83dc, type: 2}
+  - {fileID: 11400000, guid: f4fdf5a470baa214cbe9e989c4ffc6d1, type: 2}
+  greek:
+  - {fileID: 11400000, guid: de438b1e4fade8c47b99ab164ba73d9d, type: 2}
+  - {fileID: 11400000, guid: 31de89c2be81d45499a3903dea173d39, type: 2}
+  - {fileID: 11400000, guid: 82f9cf39b80f80841bc34afa2d1e37ca, type: 2}
+  japanese:
+  - {fileID: 11400000, guid: aaa9b0ddcdf14d3408cf862f80f94fb1, type: 2}
+  - {fileID: 11400000, guid: ec581f52acdb9d64589b360c43434d22, type: 2}
+  - {fileID: 11400000, guid: cbd358b15287a914d884fd2307653640, type: 2}
   player: 1
   selected: 0
   health: 000000000000000000000000
@@ -27278,6 +27303,7 @@ MonoBehaviour:
   deadCount: 0
   playerScript: {fileID: 534608636}
   spawn: {fileID: 1072669964}
+  teamSelected: 0
 --- !u!1001 &1696863288393156121
 PrefabInstance:
   m_ObjectHideFlags: 0

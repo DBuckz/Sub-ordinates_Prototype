@@ -11,7 +11,7 @@ public class Picker : MonoBehaviour
     bool A;
     bool selecting;
     static bool cSelected, gSelected, jSelected;
-   public TeamManager team;
+    public TeamManager team;
     public float VerticalInput;
     public bool picked;
 
@@ -21,9 +21,11 @@ public class Picker : MonoBehaviour
 
     public AudioSource move;
     public AudioSource selected;
+
+    private InfoCarry _infoCarry;
     void Start()
     {
-      
+        _infoCarry = GameObject.Find("InfoCarry").GetComponent<InfoCarry>();
     }
 
     // Update is called once per frame
@@ -71,6 +73,7 @@ public class Picker : MonoBehaviour
                     images[0].sprite = Celts[0];
                     images[1].sprite = Celts[1];
                     images[2].sprite = Celts[2];
+                    _infoCarry.Recieve(player - 1, 1);
                     picked = true;
                     selected.Play();
 
@@ -83,6 +86,7 @@ public class Picker : MonoBehaviour
                     images[0].sprite = greeks[0];
                     images[1].sprite = greeks[1];
                     images[2].sprite = greeks[2];
+                    _infoCarry.Recieve(player - 1, 2);
                     picked = true;
                     selected.Play();
 
@@ -95,8 +99,10 @@ public class Picker : MonoBehaviour
                     images[0].sprite = japan[0];
                     images[1].sprite = japan[1];
                     images[2].sprite = japan[2];
+                    _infoCarry.Recieve(player - 1, 3);
                     picked = true;
                     selected.Play();
+                    
                 }
                 team.Fucksion(player, i-1);
             }
