@@ -27,7 +27,7 @@ MonoBehaviour:
     type: 3}
   attackSprite: {fileID: 0}
   animations:
-  - {fileID: 7400000, guid: 3618ec6b66edb514cb2941264b2b80b1, type: 2}
+  - {fileID: 7400000, guid: f54efb560bcde354093223b6bbd66cac, type: 2}
   - {fileID: 7400000, guid: e7987d177d219374ab52c89084b53b7e, type: 2}
   - {fileID: 7400000, guid: 6ca75e39e7510bd45a54fa9f96a4f30e, type: 2}
   - {fileID: 7400000, guid: 35a47de8fd638964993feb74f36baa1b, type: 2}

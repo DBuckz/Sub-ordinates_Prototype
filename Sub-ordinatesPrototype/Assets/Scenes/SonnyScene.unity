@@ -420,6 +420,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 47770205}
   m_CullTransparentMesh: 0
+--- !u!1 &62011203 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2166545317875207969, guid: fe332881b0db1cd43a30634330d20a14,
+    type: 3}
+  m_PrefabInstance: {fileID: 2042962295732289236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &62011206
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 62011203}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 0}
+  m_Animations:
+  - {fileID: 7400000, guid: a57185e12ea25d2479c18c91c321b243, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!4 &85882291 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7144466092657985601, guid: 34402796bd35bde4fbfdfd2437e42408,
@@ -27379,7 +27401,7 @@ PrefabInstance:
     - target: {fileID: 853000338152983141, guid: 5258d7567cec0814f9bdc3042820fc92,
         type: 3}
       propertyPath: m_Name
-      value: Character 2
+      value: Character2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5258d7567cec0814f9bdc3042820fc92, type: 3}
@@ -27475,11 +27497,27 @@ PrefabInstance:
       propertyPath: attackCount
       value: 
       objectReference: {fileID: 1140228431}
+    - target: {fileID: 2042962296048632875, guid: fe332881b0db1cd43a30634330d20a14,
+        type: 3}
+      propertyPath: moves
+      value: 
+      objectReference: {fileID: 62011206}
     - target: {fileID: 2042962296048632879, guid: fe332881b0db1cd43a30634330d20a14,
         type: 3}
       propertyPath: m_Name
-      value: Character
+      value: Character1
       objectReference: {fileID: 0}
+    - target: {fileID: 8698307370457531783, guid: fe332881b0db1cd43a30634330d20a14,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8698307370457531783, guid: fe332881b0db1cd43a30634330d20a14,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 4895055797721914116, guid: d31c39cce534fd54596ee512852a7352,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe332881b0db1cd43a30634330d20a14, type: 3}
 --- !u!1 &2042962296257825916 stripped

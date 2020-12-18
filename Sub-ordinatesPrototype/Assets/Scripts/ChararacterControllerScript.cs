@@ -64,12 +64,25 @@ public class ChararacterControllerScript : MonoBehaviour
     public Image[] cooldowns;
     public Text attackCount;
 
+    //animation
     public Animation moves;
-    public Characters anim;
+    
+   // AnimationClip[] clips;
+    int currentclip = 0;
 
+    private void OnEnable()
+    {
+       
+        
+        //  moves = new Animation();
+        //clips = character.animations;
+    }
     void Start()
     {
+        
+        
         rb = GetComponent<Rigidbody2D>();
+      
         character = teamController.chars[teamController.selected];
         speed = character.speed;
         jumpForce = character.jumpForce;
@@ -77,6 +90,16 @@ public class ChararacterControllerScript : MonoBehaviour
         meleeStore = character.meleeStore;
         meleeMax = character.meleeStore;
         CoolReset(true);
+
+        if (moves)
+        {
+            foreach (AnimationClip c in character.animations)
+            {
+                c.legacy=true;
+                moves.AddClip(c, c.name);
+            }
+        }
+
     }
 
     public void Changed(Characters newChar, bool death)
@@ -289,8 +312,14 @@ public class ChararacterControllerScript : MonoBehaviour
 
     void Attack()
     {
+      
+       
         if (X && meleeStore > 0 && !blocking)
         {
+            
+        currentclip = 0;
+        moves.clip = character.animations[currentclip];
+            moves.Play();
             //moves.Play(anim.animations);
           //  moves.Play()+anim.animations[0].play();
             if (character.type == 0)
