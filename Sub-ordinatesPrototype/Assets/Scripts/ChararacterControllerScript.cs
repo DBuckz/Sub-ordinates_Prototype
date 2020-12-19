@@ -181,7 +181,6 @@ public class ChararacterControllerScript : MonoBehaviour
             switchWait = false;
         }
         UIUpdate();
-
         Switch();
         Block();
         Move();
@@ -249,6 +248,7 @@ public class ChararacterControllerScript : MonoBehaviour
             //spriteRend.color = Color.red;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
+        
     }
 
     void CheckIfGrounded()
@@ -323,7 +323,7 @@ public class ChararacterControllerScript : MonoBehaviour
             }
             meleeStore--;
         }
-
+        
     }
 
     IEnumerator DashWait(Vector2 start)

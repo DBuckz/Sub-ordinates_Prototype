@@ -23,6 +23,12 @@ public class Characters : ScriptableObject
     public Sprite attackSprite;
     public Animation[] animations;
 
+    public Sprite[] blocking;
+    public Sprite[] idle;
+    public Sprite[] jumping;
+    public Sprite[] attacking;
+    public Sprite[] moving;
+
 
 
 
