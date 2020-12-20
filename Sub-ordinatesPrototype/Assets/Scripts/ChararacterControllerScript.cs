@@ -33,7 +33,7 @@ public class ChararacterControllerScript : MonoBehaviour
     public TeamController teamController;
 
     public Characters character;
-    public Characters characterNum;
+   // public Characters characterNum;
     public ChararacterControllerScript enemy;
     public GameObject rangeAttack;
 
@@ -92,7 +92,7 @@ public class ChararacterControllerScript : MonoBehaviour
         CoolReset(true);
 
         // might break code above some how
-        characterNum = GetComponent<Characters>();
+       // characterNum = GetComponent<Characters>();
     }
 
     public void Changed(Characters newChar, bool death)
@@ -297,7 +297,7 @@ public class ChararacterControllerScript : MonoBehaviour
           
             if (m_Animator.GetBool("isJump") == false)
             {
-                m_Animator.SetInteger("run", characterNum.characterNumber);
+                m_Animator.SetInteger("run", character.characterNumber);
                 m_Animator.SetBool("isRun", true);
             }
             Turn(1);
@@ -311,7 +311,7 @@ public class ChararacterControllerScript : MonoBehaviour
 
             if (m_Animator.GetBool("isJump") == false)
             {
-                m_Animator.SetInteger("run", characterNum.characterNumber);
+                m_Animator.SetInteger("run", character.characterNumber);
                 m_Animator.SetBool("isRun", true);
             }
         }else m_Animator.SetBool("isRun",false);
@@ -330,7 +330,7 @@ public class ChararacterControllerScript : MonoBehaviour
         }
         else if(m_Animator.GetBool("isBlock") == false && m_Animator.GetBool("isAttack") == false && m_Animator.GetBool("isJump") == false)
         {
-            m_Animator.SetInteger("idle", characterNum.characterNumber);
+            m_Animator.SetInteger("idle", character.characterNumber);
             m_Animator.SetBool("isIdle", true);
         }
     }
@@ -370,7 +370,7 @@ public class ChararacterControllerScript : MonoBehaviour
         if (rb.velocity.y < 0)
         {
             m_Animator.SetBool("isJump", true);
-            m_Animator.SetInteger("jump", characterNum.characterNumber);
+            m_Animator.SetInteger("jump", character.characterNumber);
             rb.velocity += Vector2.up * Physics2D.gravity * (fallMultiplier - 1) * Time.deltaTime;
         }
         else if (rb.velocity.y > 0 && !A)
@@ -381,7 +381,7 @@ public class ChararacterControllerScript : MonoBehaviour
         else if (rb.velocity.y > 0)
         {
             m_Animator.SetBool("isJump", true);
-            m_Animator.SetInteger("jump", characterNum.characterNumber);
+            m_Animator.SetInteger("jump", character.characterNumber);
         }else m_Animator.SetBool("isJump", false);
 
         if (m_Animator.GetBool("isJump") == true)
@@ -406,7 +406,8 @@ public class ChararacterControllerScript : MonoBehaviour
 
             m_Animator.SetBool("isAttack", true);
 
-            m_Animator.SetInteger("attack", characterNum.characterNumber);
+            m_Animator.SetInteger("attack", character.characterNumber);
+            Invoke("StopAttack", character.attacktime);
             // m_Animator.SetBool("isIdle", false);
             // m_Animator.SetBool("isRun", false);
             // m_Animator.SetBool("isBlock", false);
@@ -425,7 +426,9 @@ public class ChararacterControllerScript : MonoBehaviour
             else if (character.type == 1)
             {
                 if (HorizontalInput == 0 && VerticalInput == 0) HorizontalInput = transform.localScale.x;
+             // gameObject A=   rangeAttack.GetComponent<SpriteRenderer>;
                 GameObject proj = Instantiate(rangeAttack, transform.position, Quaternion.Euler(0, 0, -90 + Mathf.Rad2Deg * Mathf.Atan2(VerticalInput, HorizontalInput)));
+                proj.GetComponent<SpriteRenderer>().sprite = character.attackSprite;
                 proj.name = character.attack.ToString();
                 proj.tag = projTag;
                 Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
@@ -447,7 +450,7 @@ public class ChararacterControllerScript : MonoBehaviour
 
             meleeStore--;
         }
-        m_Animator.SetBool("isAttack", false);
+       // m_Animator.SetBool("isAttack", false);
         
 
     }
@@ -481,7 +484,7 @@ public class ChararacterControllerScript : MonoBehaviour
             int dir = 0;
             if (P) dir = -1;
             else if (N) dir = 1;
-            characterNum = GetComponent<Characters>();
+          //  character = GetComponent<Characters>();
             teamController.NewChar(dir, false);
         }
 
@@ -496,7 +499,7 @@ public class ChararacterControllerScript : MonoBehaviour
             //spriteRend.color = Color.yellow;
             blocking = true;
             m_Animator.SetBool("isBlock", true);
-            m_Animator.SetInteger("block", characterNum.characterNumber);
+            m_Animator.SetInteger("block", character.characterNumber);
             m_Animator.SetBool("isIdle", false);
             m_Animator.SetBool("isAttack", false);
             m_Animator.SetBool("isRun", false);
@@ -543,6 +546,11 @@ public class ChararacterControllerScript : MonoBehaviour
                 Hurt(int.Parse(collision.name));
             }
         }
+    }
+
+    private void StopAttack()
+    {
+        m_Animator.SetBool("isAttack", false);
     }
 
     IEnumerator AttackEnd()

@@ -19,7 +19,7 @@ public class Characters : ScriptableObject
     public int meleeStore;
     public float blockWait;
     public int characterNumber;
-
+    public float attacktime;
     public Sprite characterSprite;
     public Sprite attackSprite;
     //public AnimationClip[] animations;
