@@ -34,6 +34,7 @@ public class CharacterControllerWithSounds : MonoBehaviour
     public AudioSource LightningSound;
     public AudioSource BlockSound;
     public AudioSource SwapSound;
+    public AudioSource DashSound;
 
     public SpriteRenderer spriteRend;
     public TeamController teamController;
@@ -255,6 +256,7 @@ public class CharacterControllerWithSounds : MonoBehaviour
             //spriteRend.color = Color.red;
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
 
+            JumpSound.Play();
         }
     }
 
@@ -301,6 +303,9 @@ public class CharacterControllerWithSounds : MonoBehaviour
                 if (HorizontalInput == 0 && VerticalInput == 0) HorizontalInput = transform.localScale.x;
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + new Vector3(transform.localScale.x * 0.55f, 0), 1.1f, LayerMask.GetMask("Player"));
                 //RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, new Vector2(HorizontalInput, VerticalInput), 1.5f, LayerMask.GetMask("Player"));
+
+                PunchSound.Play();
+
                 if (colliders.Length > 1)
                 {
                     enemy.Hurt(character.attack);
@@ -316,6 +321,8 @@ public class CharacterControllerWithSounds : MonoBehaviour
                 rb.AddForce(proj.transform.up * 9, ForceMode2D.Impulse);
                 Destroy(proj, 5f);
 
+                LightningSound.Play();
+
             }
             else if (character.type == 2)
             {
@@ -326,7 +333,7 @@ public class CharacterControllerWithSounds : MonoBehaviour
                 if (HorizontalInput == 0 && VerticalInput == 0) HorizontalInput = transform.localScale.x;
                 rb.velocity = new Vector2(HorizontalInput, VerticalInput * 0.7f) * 30;
 
-
+                DashSound.Play();
             }
             meleeStore--;
         }
@@ -364,6 +371,8 @@ public class CharacterControllerWithSounds : MonoBehaviour
             else if (N) dir = 1;
 
             teamController.NewChar(dir, false);
+
+            SwapSound.Play();
         }
 
     }
@@ -403,6 +412,7 @@ public class CharacterControllerWithSounds : MonoBehaviour
         {
             float newDmg = dmg * (1 - character.block);
             dmg = Mathf.RoundToInt(newDmg);
+            BlockSound.Play();
         }
         teamController.Hurt(dmg);
     }
