@@ -33,6 +33,7 @@ public class ChararacterControllerScript : MonoBehaviour
     public TeamController teamController;
 
     public Characters character;
+    public Characters characterNum;
     public ChararacterControllerScript enemy;
     public GameObject rangeAttack;
 
@@ -65,15 +66,14 @@ public class ChararacterControllerScript : MonoBehaviour
     public Text attackCount;
 
     //animation
-    public Animation moves;
-    
-   // AnimationClip[] clips;
-    int currentclip = 0;
+    public Animator m_Animator;
+
+   
 
     private void OnEnable()
     {
-       
-        
+
+      
         //  moves = new Animation();
         //clips = character.animations;
     }
@@ -91,14 +91,7 @@ public class ChararacterControllerScript : MonoBehaviour
         meleeMax = character.meleeStore;
         CoolReset(true);
 
-        if (moves)
-        {
-            foreach (AnimationClip c in character.animations)
-            {
-                c.legacy=true;
-                moves.AddClip(c, c.name);
-            }
-        }
+      
 
     }
 
@@ -159,12 +152,51 @@ public class ChararacterControllerScript : MonoBehaviour
         N = Input.GetButtonDown("SwitchN" + player);
         projTag = "Proj" + player;
 
-        //if(!meleeCooling&& meleeStore < meleeMax)
+
+        //animation
+        
+        //if (m_Animator.GetBool("isRun") == true)
         //{
-        //    meleeCooling = true;
-        //    //StartCoroutine(MeleeCool(1/character.attackRate));
+        //    m_Animator.SetBool("isIdle", false);
+        //    m_Animator.SetBool("isAttack", false);
+        //    m_Animator.SetBool("isBlock", false);
         //}
-        if(Input.GetButtonUp("Block" + player)&& !blockWait)
+        //if (m_Animator.GetBool("isIdle") == true)
+        //{
+
+        //    m_Animator.SetBool("isRun", false);
+        //    m_Animator.SetBool("isAttack", false);
+        //    m_Animator.SetBool("isBlock", false);
+        //}
+        //if (m_Animator.GetBool("isAttack") == true)
+        //{
+        //    m_Animator.SetBool("isIdle", false);
+        //    m_Animator.SetBool("isRun", false);
+        //    m_Animator.SetBool("isBlock", false);
+        //}
+        //if (m_Animator.GetBool("isBlock") == true)
+        //{
+        //    m_Animator.SetBool("isIdle", false);
+        //    m_Animator.SetBool("isAttack", false);
+        //    m_Animator.SetBool("isRun", false);
+        //}
+
+
+       /// if (m_Animator.GetBool("isRun") == true && m_Animator.GetBool("isRun") == true && m_Animator.GetBool("isRun") == true)
+       // {
+      //      m_Animator.SetBool("isIdle", true);
+     //       m_Animator.SetInteger("idle", 1);
+      //  }
+
+
+            //
+
+            //if(!meleeCooling&& meleeStore < meleeMax)
+            //{
+            //    meleeCooling = true;
+            //    //StartCoroutine(MeleeCool(1/character.attackRate));
+            //}
+            if (Input.GetButtonUp("Block" + player)&& !blockWait)
         {
             blockWait = true;
             blockTimer = blockCool;
@@ -251,17 +283,45 @@ public class ChararacterControllerScript : MonoBehaviour
         if (dashOverride) return;
 
 
+
+
+
+
+        
         float moveBy = HorizontalInput * speed;
         if (blocking) moveBy *= (1-character.block) ;
         rb.velocity = new Vector2(moveBy, rb.velocity.y);
 
         if(rb.velocity.x > 0)
         {
+            m_Animator.SetInteger("run", 1);
+            m_Animator.SetBool("isRun", true);
             Turn(1);
         }
+
         else if(rb.velocity.x < 0)
         {
+            m_Animator.SetInteger("run", 1);
+            m_Animator.SetBool("isRun", true);
             Turn(-1);
+        }else m_Animator.SetBool("isRun",false);
+
+        //animation  
+
+
+
+
+        if (m_Animator.GetBool("isRun") == true)
+        {
+            m_Animator.SetBool("isIdle", false);
+         
+           // m_Animator.SetBool("isAttack", false);
+            m_Animator.SetBool("isBlock", false);
+        }
+        else if(m_Animator.GetBool("isBlock") == false && m_Animator.GetBool("isAttack") == false)
+        {
+            m_Animator.SetInteger("idle", 1);
+            m_Animator.SetBool("isIdle", true);
         }
     }
 
@@ -316,10 +376,15 @@ public class ChararacterControllerScript : MonoBehaviour
        
         if (X && meleeStore > 0 && !blocking)
         {
-            
-       
-           
-         
+
+            m_Animator.SetBool("isAttack", true);
+          
+            m_Animator.SetInteger("attack", 1);
+            m_Animator.SetBool("isIdle", false);
+            m_Animator.SetBool("isRun", false);
+            m_Animator.SetBool("isBlock", false);
+            StartCoroutine(AttackEnd());
+
             if (character.type == 0)
             {
                 if (HorizontalInput == 0 && VerticalInput == 0) HorizontalInput = transform.localScale.x;
@@ -352,9 +417,11 @@ public class ChararacterControllerScript : MonoBehaviour
                 
 
             }
+           
             meleeStore--;
         }
         
+
     }
 
     IEnumerator DashWait(Vector2 start)
@@ -400,6 +467,12 @@ public class ChararacterControllerScript : MonoBehaviour
         {
             //spriteRend.color = Color.yellow;
             blocking = true;
+            m_Animator.SetBool("isBlock", true);
+            m_Animator.SetInteger("block", 1);
+            m_Animator.SetBool("isIdle", false);
+            m_Animator.SetBool("isAttack", false);
+            m_Animator.SetBool("isRun", false);
+
             //blockWait = false;
             //blockWait = false;
             //lastFrameBlock = blocking;
@@ -442,4 +515,12 @@ public class ChararacterControllerScript : MonoBehaviour
             }
         }
     }
-}
+
+    IEnumerator AttackEnd()
+    {
+
+        yield return new WaitForSeconds(0.3f);
+        m_Animator.SetBool("isAttack", false);
+       // m_Animator.SetBool("isIdle", true);
+    }
+    }
