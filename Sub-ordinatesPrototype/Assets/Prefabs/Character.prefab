@@ -78,7 +78,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2042962296048632879
@@ -194,7 +194,6 @@ MonoBehaviour:
   enemy: {fileID: 0}
   rangeAttack: {fileID: 5787070106245674172, guid: 9cf4e146b38504842ae160c0f21cf84c,
     type: 3}
-  switchCool: 8
   cooldowns:
   - {fileID: 0}
   - {fileID: 0}

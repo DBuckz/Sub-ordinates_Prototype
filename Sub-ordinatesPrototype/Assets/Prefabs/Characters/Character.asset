@@ -21,6 +21,8 @@ MonoBehaviour:
   attack: 0
   attackRate: 0
   block: 0
+  meleeStore: 0
+  blockWait: 0
   characterSprite: {fileID: 0}
   attackSprite: {fileID: 0}
   animations: []
