@@ -27451,10 +27451,26 @@ PrefabInstance:
       propertyPath: m_Animator
       value: 
       objectReference: {fileID: 190341942}
+    - target: {fileID: 853000338152983137, guid: 5258d7567cec0814f9bdc3042820fc92,
+        type: 3}
+      propertyPath: characterNum
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 853000338152983137, guid: 5258d7567cec0814f9bdc3042820fc92,
+        type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 11400000, guid: e9b9da353585f5b49af2c40c54a83418,
+        type: 2}
     - target: {fileID: 853000338152983141, guid: 5258d7567cec0814f9bdc3042820fc92,
         type: 3}
       propertyPath: m_Name
       value: Character2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4358504750060393389, guid: 5258d7567cec0814f9bdc3042820fc92,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5258d7567cec0814f9bdc3042820fc92, type: 3}
@@ -27469,6 +27485,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_SortingOrder
       value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1012841843219551148, guid: fe332881b0db1cd43a30634330d20a14,
+        type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2042962296048632874, guid: fe332881b0db1cd43a30634330d20a14,
         type: 3}
@@ -27565,6 +27586,17 @@ PrefabInstance:
       propertyPath: m_Animator
       value: 
       objectReference: {fileID: 772987711}
+    - target: {fileID: 2042962296048632875, guid: fe332881b0db1cd43a30634330d20a14,
+        type: 3}
+      propertyPath: characterNum
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2042962296048632875, guid: fe332881b0db1cd43a30634330d20a14,
+        type: 3}
+      propertyPath: character
+      value: 
+      objectReference: {fileID: 11400000, guid: cbd358b15287a914d884fd2307653640,
+        type: 2}
     - target: {fileID: 2042962296048632879, guid: fe332881b0db1cd43a30634330d20a14,
         type: 3}
       propertyPath: m_Name

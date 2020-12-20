@@ -1,0 +1,392 @@
+fileFormatVersion: 2
+guid: a5d72f21cc35d7449b5227f46c0dbf26
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3095558424060235869
+    second: DagdaSheet_0
+  - first:
+      213: 8531073097941828395
+    second: DagdaSheet_1
+  - first:
+      213: 1189679214768730777
+    second: DagdaSheet_2
+  - first:
+      213: -5113061480595166370
+    second: DagdaSheet_3
+  - first:
+      213: 6846525400959847659
+    second: DagdaSheet_4
+  - first:
+      213: -4751293829134457046
+    second: DagdaSheet_5
+  - first:
+      213: -319297950565851370
+    second: DagdaSheet_6
+  - first:
+      213: 4587381455511133039
+    second: DagdaSheet_7
+  - first:
+      213: -3563566720694286793
+    second: DagdaSheet_8
+  - first:
+      213: -4246796513044669358
+    second: DagdaSheet_9
+  - first:
+      213: -1870481170808870066
+    second: DagdaSheet_10
+  - first:
+      213: -3352008569133589138
+    second: DagdaSheet_11
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DagdaSheet_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 267
+        width: 38
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5014975cf1a5fa20800000000000000
+      internalID: 3095558424060235869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DagdaSheet_1
+      rect:
+        serializedVersion: 2
+        x: 61
+        y: 267
+        width: 44
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b23c6b378c5746670800000000000000
+      internalID: 8531073097941828395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DagdaSheet_2
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 267
+        width: 50
+        height: 61
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 992b4f051f6928010800000000000000
+      internalID: 1189679214768730777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DagdaSheet_3
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 204
+        width: 57
+        height: 62
+      alignment: 9
+      pivot: {x: 0.6695057, y: 0.50000024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5b646e6ca1ca09b0800000000000000
+      internalID: -5113061480595166370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DagdaSheet_4
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 203
+        width: 57
+        height: 60
+      alignment: 9
+      pivot: {x: 0.6525548, y: 0.4919487}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bec86e5e39eb30f50800000000000000
+      internalID: 6846525400959847659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DagdaSheet_5
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 141
+        width: 61
+        height: 61
+      alignment: 9
+      pivot: {x: 0.69006884, y: 0.53167826}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a276fe29f63001eb0800000000000000
+      internalID: -4751293829134457046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DagdaSheet_6
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 141
+        width: 62
+        height: 61
+      alignment: 9
+      pivot: {x: 0.6870031, y: 0.50791955}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61f1307a430a19bf0800000000000000
+      internalID: -319297950565851370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DagdaSheet_7
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 141
+        width: 60
+        height: 61
+      alignment: 9
+      pivot: {x: 0.6368759, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6b94f8f027a9af30800000000000000
+      internalID: 4587381455511133039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DagdaSheet_8
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 65
+        width: 63
+        height: 74
+      alignment: 9
+      pivot: {x: 0.69170266, y: 0.47388726}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7360d97b2faab8ec0800000000000000
+      internalID: -3563566720694286793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DagdaSheet_9
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 65
+        width: 74
+        height: 65
+      alignment: 9
+      pivot: {x: 0.3041516, y: 0.5148646}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25cda9662195015c0800000000000000
+      internalID: -4246796513044669358
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DagdaSheet_10
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1
+        width: 57
+        height: 63
+      alignment: 9
+      pivot: {x: 0.6864563, y: 0.55367726}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4b61ee0947ba06e0800000000000000
+      internalID: -1870481170808870066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DagdaSheet_11
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 1
+        width: 57
+        height: 60
+      alignment: 9
+      pivot: {x: 0.63560444, y: 0.5322062}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6d1ab057f54b71d0800000000000000
+      internalID: -3352008569133589138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

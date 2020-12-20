@@ -91,8 +91,8 @@ public class ChararacterControllerScript : MonoBehaviour
         meleeMax = character.meleeStore;
         CoolReset(true);
 
-      
-
+        // might break code above some how
+        characterNum = GetComponent<Characters>();
     }
 
     public void Changed(Characters newChar, bool death)
@@ -294,16 +294,26 @@ public class ChararacterControllerScript : MonoBehaviour
 
         if(rb.velocity.x > 0)
         {
-            m_Animator.SetInteger("run", 1);
-            m_Animator.SetBool("isRun", true);
+          
+            if (m_Animator.GetBool("isJump") == false)
+            {
+                m_Animator.SetInteger("run", characterNum.characterNumber);
+                m_Animator.SetBool("isRun", true);
+            }
             Turn(1);
         }
 
         else if(rb.velocity.x < 0)
         {
-            m_Animator.SetInteger("run", 1);
-            m_Animator.SetBool("isRun", true);
+            
+            
             Turn(-1);
+
+            if (m_Animator.GetBool("isJump") == false)
+            {
+                m_Animator.SetInteger("run", characterNum.characterNumber);
+                m_Animator.SetBool("isRun", true);
+            }
         }else m_Animator.SetBool("isRun",false);
 
         //animation  
@@ -316,11 +326,11 @@ public class ChararacterControllerScript : MonoBehaviour
             m_Animator.SetBool("isIdle", false);
          
            // m_Animator.SetBool("isAttack", false);
-            m_Animator.SetBool("isBlock", false);
+           // m_Animator.SetBool("isBlock", false);
         }
-        else if(m_Animator.GetBool("isBlock") == false && m_Animator.GetBool("isAttack") == false)
+        else if(m_Animator.GetBool("isBlock") == false && m_Animator.GetBool("isAttack") == false && m_Animator.GetBool("isJump") == false)
         {
-            m_Animator.SetInteger("idle", 1);
+            m_Animator.SetInteger("idle", characterNum.characterNumber);
             m_Animator.SetBool("isIdle", true);
         }
     }
@@ -331,6 +341,7 @@ public class ChararacterControllerScript : MonoBehaviour
         if (A && (isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor) && rb.velocity.y==0 && !blocking)
         {
             //spriteRend.color = Color.red;
+         
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         }
         
@@ -341,6 +352,7 @@ public class ChararacterControllerScript : MonoBehaviour
         Collider2D colliders = Physics2D.OverlapCircle(isGroundedChecker.position, checkGroundRadius, groundLayer);
         if (colliders != null)
         {
+          
             isGrounded = true;
         }
         else
@@ -357,12 +369,27 @@ public class ChararacterControllerScript : MonoBehaviour
     {
         if (rb.velocity.y < 0)
         {
+            m_Animator.SetBool("isJump", true);
+            m_Animator.SetInteger("jump", characterNum.characterNumber);
             rb.velocity += Vector2.up * Physics2D.gravity * (fallMultiplier - 1) * Time.deltaTime;
         }
         else if (rb.velocity.y > 0 && !A)
         {
+            
             rb.velocity += Vector2.up * Physics2D.gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
+        else if (rb.velocity.y > 0)
+        {
+            m_Animator.SetBool("isJump", true);
+            m_Animator.SetInteger("jump", characterNum.characterNumber);
+        }else m_Animator.SetBool("isJump", false);
+
+        if (m_Animator.GetBool("isJump") == true)
+        {
+            m_Animator.SetBool("isIdle", false);
+            m_Animator.SetBool("isRun", false);
+        }
+         
     }
 
     void Turn(int dir)
@@ -372,33 +399,33 @@ public class ChararacterControllerScript : MonoBehaviour
 
     void Attack()
     {
-      
-       
+
+
         if (X && meleeStore > 0 && !blocking)
         {
 
             m_Animator.SetBool("isAttack", true);
-          
-            m_Animator.SetInteger("attack", 1);
-            m_Animator.SetBool("isIdle", false);
-            m_Animator.SetBool("isRun", false);
-            m_Animator.SetBool("isBlock", false);
-            StartCoroutine(AttackEnd());
+
+            m_Animator.SetInteger("attack", characterNum.characterNumber);
+            // m_Animator.SetBool("isIdle", false);
+            // m_Animator.SetBool("isRun", false);
+            // m_Animator.SetBool("isBlock", false);
+            // StartCoroutine(AttackEnd());
 
             if (character.type == 0)
             {
                 if (HorizontalInput == 0 && VerticalInput == 0) HorizontalInput = transform.localScale.x;
-                Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + new Vector3(transform.localScale.x*0.55f,0), 1.1f, LayerMask.GetMask("Player"));
+                Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + new Vector3(transform.localScale.x * 0.55f, 0), 1.1f, LayerMask.GetMask("Player"));
                 //RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, new Vector2(HorizontalInput, VerticalInput), 1.5f, LayerMask.GetMask("Player"));
                 if (colliders.Length > 1)
                 {
                     enemy.Hurt(character.attack);
                 }
             }
-            else if(character.type == 1)
+            else if (character.type == 1)
             {
                 if (HorizontalInput == 0 && VerticalInput == 0) HorizontalInput = transform.localScale.x;
-                GameObject proj = Instantiate(rangeAttack, transform.position, Quaternion.Euler(0,0,-90+Mathf.Rad2Deg*Mathf.Atan2(VerticalInput, HorizontalInput)));
+                GameObject proj = Instantiate(rangeAttack, transform.position, Quaternion.Euler(0, 0, -90 + Mathf.Rad2Deg * Mathf.Atan2(VerticalInput, HorizontalInput)));
                 proj.name = character.attack.ToString();
                 proj.tag = projTag;
                 Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
@@ -406,20 +433,21 @@ public class ChararacterControllerScript : MonoBehaviour
                 Destroy(proj, 5f);
 
             }
-            else if(character.type == 2)
+            else if (character.type == 2)
             {
                 dashOverride = true;
                 Vector2 start = transform.position;
                 StartCoroutine(DashWait(start));
 
                 if (HorizontalInput == 0 && VerticalInput == 0) HorizontalInput = transform.localScale.x;
-                rb.velocity = new Vector2(HorizontalInput, VerticalInput*0.7f) * 30;
-                
+                rb.velocity = new Vector2(HorizontalInput, VerticalInput * 0.7f) * 30;
+
 
             }
-           
+
             meleeStore--;
         }
+        m_Animator.SetBool("isAttack", false);
         
 
     }
@@ -453,7 +481,7 @@ public class ChararacterControllerScript : MonoBehaviour
             int dir = 0;
             if (P) dir = -1;
             else if (N) dir = 1;
-
+            characterNum = GetComponent<Characters>();
             teamController.NewChar(dir, false);
         }
 
@@ -468,7 +496,7 @@ public class ChararacterControllerScript : MonoBehaviour
             //spriteRend.color = Color.yellow;
             blocking = true;
             m_Animator.SetBool("isBlock", true);
-            m_Animator.SetInteger("block", 1);
+            m_Animator.SetInteger("block", characterNum.characterNumber);
             m_Animator.SetBool("isIdle", false);
             m_Animator.SetBool("isAttack", false);
             m_Animator.SetBool("isRun", false);
@@ -477,6 +505,7 @@ public class ChararacterControllerScript : MonoBehaviour
             //blockWait = false;
             //lastFrameBlock = blocking;
         }
+        else m_Animator.SetBool("isBlock", false);
         //if (lastFrameBlock && !B)
         //{
         //    //blockCooling = true;
