@@ -317,11 +317,9 @@ public class ChararacterControllerScript : MonoBehaviour
         if (X && meleeStore > 0 && !blocking)
         {
             
-        currentclip = 0;
-        moves.clip = character.animations[currentclip];
-            moves.Play();
-            //moves.Play(anim.animations);
-          //  moves.Play()+anim.animations[0].play();
+       
+           
+         
             if (character.type == 0)
             {
                 if (HorizontalInput == 0 && VerticalInput == 0) HorizontalInput = transform.localScale.x;
