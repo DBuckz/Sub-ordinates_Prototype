@@ -68,7 +68,7 @@ public class ChararacterControllerScript : MonoBehaviour
     //animation
     public Animator m_Animator;
 
-   
+    public ParticleSystem particleWalk, particleJump, particleSwitch;
 
     private void OnEnable()
     {
@@ -141,6 +141,7 @@ public class ChararacterControllerScript : MonoBehaviour
 
     void Update()
     {
+        if (rb.velocity.x == 0 || !isGrounded) particleWalk.gameObject.SetActive(false);
         blocking = false;
         HorizontalInput = Input.GetAxis("Horizontal" + player);
         VerticalInput = Input.GetAxis("Vertical" + player);
@@ -247,6 +248,11 @@ public class ChararacterControllerScript : MonoBehaviour
         Attack();
 
         Ult();
+        if ((rb.velocity.x < 0f || rb.velocity.x > 0f) && isGrounded)
+        {
+            particleWalk.gameObject.SetActive(true);
+            particleWalk.transform.localScale = this.transform.localScale;
+        }
     }
 
     //IEnumerator MeleeCool(float wait)
@@ -343,6 +349,7 @@ public class ChararacterControllerScript : MonoBehaviour
             //spriteRend.color = Color.red;
          
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            particleJump.Play();
         }
         
     }
@@ -486,6 +493,7 @@ public class ChararacterControllerScript : MonoBehaviour
             else if (N) dir = 1;
           //  character = GetComponent<Characters>();
             teamController.NewChar(dir, false);
+            particleSwitch.Play();
         }
 
     }
