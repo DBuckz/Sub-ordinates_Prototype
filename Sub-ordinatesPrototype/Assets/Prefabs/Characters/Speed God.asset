@@ -24,16 +24,7 @@ MonoBehaviour:
   meleeStore: 2
   blockWait: 2
   characterNumber: 9
+  attacktime: 0.2
   characterSprite: {fileID: -4468780743378979911, guid: 4846be2517a552e45a286482b6b1d4d5,
     type: 3}
   attackSprite: {fileID: 0}
-  animations:
-  - {fileID: 7400000, guid: 1bc557d0bc1b6ab4fbafb70c6de2bf66, type: 2}
-  - {fileID: 7400000, guid: c36f898065a3cea489bc32f0dc4a5363, type: 2}
-  - {fileID: 7400000, guid: 7e421b29345c9ba4cbdbf3434ca0fe84, type: 2}
-  - {fileID: 7400000, guid: c3aea31c641f9eb4d82d3881ecd3b9eb, type: 2}
-  blocking: []
-  idle: []
-  jumping: []
-  attacking: []
-  moving: []

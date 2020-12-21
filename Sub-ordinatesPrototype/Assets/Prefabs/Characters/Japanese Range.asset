@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Japanese Range
   m_EditorClassIdentifier: 
   type: 1
-  deity: 1
+  deity: 0
   health: 20
   speed: 8
   jumpForce: 12
@@ -24,11 +24,7 @@ MonoBehaviour:
   meleeStore: 8
   blockWait: 2
   characterNumber: 8
+  attacktime: 0.2
   characterSprite: {fileID: 21300000, guid: 6bdb20fb67753f04cb75165b3baff828, type: 3}
-  attackSprite: {fileID: 0}
-  animations: []
-  blocking: []
-  idle: []
-  jumping: []
-  attacking: []
-  moving: []
+  attackSprite: {fileID: -2304249304183219583, guid: 3fefaac9ab3a4894e821162356bd10e2,
+    type: 3}

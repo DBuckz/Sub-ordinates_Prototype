@@ -24,24 +24,7 @@ MonoBehaviour:
   meleeStore: 1
   blockWait: 2
   characterNumber: 1
+  attacktime: 0.2
   characterSprite: {fileID: 4895055797721914116, guid: d31c39cce534fd54596ee512852a7352,
     type: 3}
   attackSprite: {fileID: 0}
-  animations: []
-  blocking:
-  - {fileID: 3095558424060235869, guid: a5d72f21cc35d7449b5227f46c0dbf26, type: 3}
-  - {fileID: 8531073097941828395, guid: a5d72f21cc35d7449b5227f46c0dbf26, type: 3}
-  - {fileID: 1189679214768730777, guid: a5d72f21cc35d7449b5227f46c0dbf26, type: 3}
-  idle:
-  - {fileID: -5113061480595166370, guid: a5d72f21cc35d7449b5227f46c0dbf26, type: 3}
-  - {fileID: 6846525400959847659, guid: a5d72f21cc35d7449b5227f46c0dbf26, type: 3}
-  jumping:
-  - {fileID: -4751293829134457046, guid: a5d72f21cc35d7449b5227f46c0dbf26, type: 3}
-  - {fileID: -319297950565851370, guid: a5d72f21cc35d7449b5227f46c0dbf26, type: 3}
-  - {fileID: 4587381455511133039, guid: a5d72f21cc35d7449b5227f46c0dbf26, type: 3}
-  attacking:
-  - {fileID: -3563566720694286793, guid: a5d72f21cc35d7449b5227f46c0dbf26, type: 3}
-  - {fileID: -4246796513044669358, guid: a5d72f21cc35d7449b5227f46c0dbf26, type: 3}
-  moving:
-  - {fileID: -1870481170808870066, guid: a5d72f21cc35d7449b5227f46c0dbf26, type: 3}
-  - {fileID: -3352008569133589138, guid: a5d72f21cc35d7449b5227f46c0dbf26, type: 3}
