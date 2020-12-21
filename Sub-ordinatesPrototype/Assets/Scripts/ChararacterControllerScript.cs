@@ -31,7 +31,8 @@ public class ChararacterControllerScript : MonoBehaviour
 
     public SpriteRenderer spriteRend;
     public TeamController teamController;
-
+    public SpriteRenderer spriteColour;
+    Color red;
     public Characters character;
     // public Characters characterNum;
     public ChararacterControllerScript enemy;
@@ -81,7 +82,7 @@ public class ChararacterControllerScript : MonoBehaviour
 
     private void OnEnable()
     {
-
+        red = new Color(255, 0, 0);
 
         //  moves = new Animation();
         //clips = character.animations;
@@ -442,6 +443,7 @@ public class ChararacterControllerScript : MonoBehaviour
                 {
                     PunchSound.Play();
                     enemy.Hurt(character.attack);
+                 
                 }
             }
             else if (character.type == 1)
@@ -468,6 +470,7 @@ public class ChararacterControllerScript : MonoBehaviour
                 rb.velocity = new Vector2(HorizontalInput, VerticalInput * 0.7f) * 30;
 
                 DashSound.Play();
+
             }
 
             meleeStore--;
@@ -495,6 +498,7 @@ public class ChararacterControllerScript : MonoBehaviour
         {
             PunchSound.Play();
             enemy.Hurt(character.attack);
+           
         }
         dashOverride = false;
 
@@ -552,7 +556,8 @@ public class ChararacterControllerScript : MonoBehaviour
 
     public void Hurt(int dmg)
     {
-
+        hurtColour();
+       Invoke("UnHurtColour", 0.2f);
         if (blocking)
         {
             float newDmg = dmg * (1 - character.block);
@@ -584,5 +589,15 @@ public class ChararacterControllerScript : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         m_Animator.SetBool("isAttack", false);
         // m_Animator.SetBool("isIdle", true);
+    }
+
+    public void hurtColour()
+    {
+        spriteColour.color = red;
+       
+    }
+    private void UnHurtColour()
+    {
+        spriteColour.color = new Color(255, 255, 255);
     }
 }
