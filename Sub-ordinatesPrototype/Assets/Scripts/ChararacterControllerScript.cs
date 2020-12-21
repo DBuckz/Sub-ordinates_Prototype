@@ -461,8 +461,8 @@ public class ChararacterControllerScript : MonoBehaviour
         //RaycastHit2D[] colliders = Physics2D.LinecastAll(start, transform.position, LayerMask.GetMask("Player"));
 
 
-        float xChange = Mathf.Abs(transform.position.x - start.x);
-        float yChange = Mathf.Abs(transform.position.y - start.y);
+        float xChange = (transform.position.x - start.x);
+        float yChange = (transform.position.y - start.y);
         float angle = Mathf.Rad2Deg*Mathf.Atan2(yChange,xChange);
         float dist = Vector2.Distance(transform.position, start);
         Vector2 dir = new Vector2(0, 0);
