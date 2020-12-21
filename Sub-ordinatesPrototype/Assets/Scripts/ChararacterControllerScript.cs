@@ -441,7 +441,7 @@ public class ChararacterControllerScript : MonoBehaviour
                 //RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, new Vector2(HorizontalInput, VerticalInput), 1.5f, LayerMask.GetMask("Player"));
                 if (colliders.Length > 1)
                 {
-                    PunchSound.Play();
+                   
                     enemy.Hurt(character.attack);
                  
                 }
@@ -496,7 +496,7 @@ public class ChararacterControllerScript : MonoBehaviour
 
         if (colliders.Length > 1)
         {
-            PunchSound.Play();
+           
             enemy.Hurt(character.attack);
            
         }
@@ -556,6 +556,7 @@ public class ChararacterControllerScript : MonoBehaviour
 
     public void Hurt(int dmg)
     {
+        PunchSound.Play();
         hurtColour();
        Invoke("UnHurtColour", 0.2f);
         if (blocking)
