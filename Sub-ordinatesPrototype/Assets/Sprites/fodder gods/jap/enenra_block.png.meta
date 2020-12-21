@@ -1,7 +1,64 @@
 fileFormatVersion: 2
 guid: c1374836d4c6e884993607e3accb19fd
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 419751966271733278
+    second: enenra_block_0
+  - first:
+      213: 9112172066095321753
+    second: enenra_block_1
+  - first:
+      213: 7621381359573267496
+    second: enenra_block_2
+  - first:
+      213: 349519194797765388
+    second: enenra_block_3
+  - first:
+      213: -7353525961165169816
+    second: enenra_block_4
+  - first:
+      213: 2747194092836342354
+    second: enenra_block_5
+  - first:
+      213: 4827622467676897663
+    second: enenra_block_6
+  - first:
+      213: 2645782635632787048
+    second: enenra_block_7
+  - first:
+      213: 8235829304703825327
+    second: enenra_block_8
+  - first:
+      213: -4815299302440913088
+    second: enenra_block_9
+  - first:
+      213: 424684734383897341
+    second: enenra_block_10
+  - first:
+      213: -6714442889627706650
+    second: enenra_block_11
+  - first:
+      213: -4801633578945790179
+    second: enenra_block_12
+  - first:
+      213: -7471520792906532415
+    second: enenra_block_13
+  - first:
+      213: -8227885377081847828
+    second: enenra_block_14
+  - first:
+      213: 7070780175673024462
+    second: enenra_block_15
+  - first:
+      213: -5424270820554645335
+    second: enenra_block_16
+  - first:
+      213: 1716201788392021011
+    second: enenra_block_17
+  - first:
+      213: 7706412096675469300
+    second: enenra_block_18
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -40,12 +97,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -71,9 +128,96 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: enenra_block_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1ef56b703243d500800000000000000
+      internalID: 419751966271733278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enenra_block_1
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99259db3730f47e70800000000000000
+      internalID: 9112172066095321753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enenra_block_2
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 824f52b77f594c960800000000000000
+      internalID: 7621381359573267496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
