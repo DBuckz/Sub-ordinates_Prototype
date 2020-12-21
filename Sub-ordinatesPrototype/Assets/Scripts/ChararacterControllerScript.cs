@@ -33,7 +33,7 @@ public class ChararacterControllerScript : MonoBehaviour
     public TeamController teamController;
 
     public Characters character;
-   // public Characters characterNum;
+    // public Characters characterNum;
     public ChararacterControllerScript enemy;
     public GameObject rangeAttack;
 
@@ -68,21 +68,30 @@ public class ChararacterControllerScript : MonoBehaviour
     //animation
     public Animator m_Animator;
 
-   
+    public ParticleSystem particleWalk, particleJump, particleSwitch;
+
+
+    // sounds
+    public AudioSource JumpSound;
+    public AudioSource PunchSound;
+    public AudioSource LightningSound;
+    public AudioSource BlockSound;
+    public AudioSource SwapSound;
+    public AudioSource DashSound;
 
     private void OnEnable()
     {
 
-      
+
         //  moves = new Animation();
         //clips = character.animations;
     }
     void Start()
     {
-        
-        
+
+
         rb = GetComponent<Rigidbody2D>();
-      
+
         character = teamController.chars[teamController.selected];
         speed = character.speed;
         jumpForce = character.jumpForce;
@@ -92,7 +101,7 @@ public class ChararacterControllerScript : MonoBehaviour
         CoolReset(true);
 
         // might break code above some how
-       // characterNum = GetComponent<Characters>();
+        // characterNum = GetComponent<Characters>();
     }
 
     public void Changed(Characters newChar, bool death)
@@ -108,18 +117,18 @@ public class ChararacterControllerScript : MonoBehaviour
 
     public void CoolReset(bool death)
     {
-         meleeTimer = 0;
-         blockTimer = 0;
-         //ultTimer;
-         meleeCool = 1/ character.attackRate;
-         blockCool = character.blockWait;
-         //ultCool;
-         meleeWait = false ;
-         blockWait=false;
+        meleeTimer = 0;
+        blockTimer = 0;
+        //ultTimer;
+        meleeCool = 1 / character.attackRate;
+        blockCool = character.blockWait;
+        //ultCool;
+        meleeWait = false;
+        blockWait = false;
 
-         //ultWait;
+        //ultWait;
 
-         switchWait = !death;
+        switchWait = !death;
 
         if (death)
         {
@@ -141,6 +150,7 @@ public class ChararacterControllerScript : MonoBehaviour
 
     void Update()
     {
+        if (rb.velocity.x == 0 || !isGrounded) particleWalk.gameObject.SetActive(false);
         blocking = false;
         HorizontalInput = Input.GetAxis("Horizontal" + player);
         VerticalInput = Input.GetAxis("Vertical" + player);
@@ -154,7 +164,7 @@ public class ChararacterControllerScript : MonoBehaviour
 
 
         //animation
-        
+
         //if (m_Animator.GetBool("isRun") == true)
         //{
         //    m_Animator.SetBool("isIdle", false);
@@ -182,21 +192,21 @@ public class ChararacterControllerScript : MonoBehaviour
         //}
 
 
-       /// if (m_Animator.GetBool("isRun") == true && m_Animator.GetBool("isRun") == true && m_Animator.GetBool("isRun") == true)
-       // {
-      //      m_Animator.SetBool("isIdle", true);
-     //       m_Animator.SetInteger("idle", 1);
-      //  }
+        /// if (m_Animator.GetBool("isRun") == true && m_Animator.GetBool("isRun") == true && m_Animator.GetBool("isRun") == true)
+        // {
+        //      m_Animator.SetBool("isIdle", true);
+        //       m_Animator.SetInteger("idle", 1);
+        //  }
 
 
-            //
+        //
 
-            //if(!meleeCooling&& meleeStore < meleeMax)
-            //{
-            //    meleeCooling = true;
-            //    //StartCoroutine(MeleeCool(1/character.attackRate));
-            //}
-            if (Input.GetButtonUp("Block" + player)&& !blockWait)
+        //if(!meleeCooling&& meleeStore < meleeMax)
+        //{
+        //    meleeCooling = true;
+        //    //StartCoroutine(MeleeCool(1/character.attackRate));
+        //}
+        if (Input.GetButtonUp("Block" + player) && !blockWait)
         {
             blockWait = true;
             blockTimer = blockCool;
@@ -247,6 +257,11 @@ public class ChararacterControllerScript : MonoBehaviour
         Attack();
 
         Ult();
+        if ((rb.velocity.x < 0f || rb.velocity.x > 0f) && isGrounded)
+        {
+            particleWalk.gameObject.SetActive(true);
+            particleWalk.transform.localScale = this.transform.localScale;
+        }
     }
 
     //IEnumerator MeleeCool(float wait)
@@ -272,7 +287,7 @@ public class ChararacterControllerScript : MonoBehaviour
     void UIUpdate()
     {
         cooldowns[0].fillAmount = (meleeCool - meleeTimer) / meleeCool;
-        cooldowns[1].fillAmount = (blockCool-blockTimer)/blockCool;
+        cooldowns[1].fillAmount = (blockCool - blockTimer) / blockCool;
         cooldowns[2].fillAmount = (switchCool - switchTimer) / switchCool;
         //cooldowns[1].fillAmount = (blockCool - blockTimer) / blockCool;
         attackCount.text = meleeStore.ToString();
@@ -287,14 +302,14 @@ public class ChararacterControllerScript : MonoBehaviour
 
 
 
-        
+
         float moveBy = HorizontalInput * speed;
-        if (blocking) moveBy *= (1-character.block) ;
+        if (blocking) moveBy *= (1 - character.block);
         rb.velocity = new Vector2(moveBy, rb.velocity.y);
 
-        if(rb.velocity.x > 0)
+        if (rb.velocity.x > 0)
         {
-          
+
             if (m_Animator.GetBool("isJump") == false)
             {
                 m_Animator.SetInteger("run", character.characterNumber);
@@ -303,10 +318,10 @@ public class ChararacterControllerScript : MonoBehaviour
             Turn(1);
         }
 
-        else if(rb.velocity.x < 0)
+        else if (rb.velocity.x < 0)
         {
-            
-            
+
+
             Turn(-1);
 
             if (m_Animator.GetBool("isJump") == false)
@@ -314,7 +329,8 @@ public class ChararacterControllerScript : MonoBehaviour
                 m_Animator.SetInteger("run", character.characterNumber);
                 m_Animator.SetBool("isRun", true);
             }
-        }else m_Animator.SetBool("isRun",false);
+        }
+        else m_Animator.SetBool("isRun", false);
 
         //animation  
 
@@ -324,11 +340,11 @@ public class ChararacterControllerScript : MonoBehaviour
         if (m_Animator.GetBool("isRun") == true)
         {
             m_Animator.SetBool("isIdle", false);
-         
-           // m_Animator.SetBool("isAttack", false);
-           // m_Animator.SetBool("isBlock", false);
+
+            // m_Animator.SetBool("isAttack", false);
+            // m_Animator.SetBool("isBlock", false);
         }
-        else if(m_Animator.GetBool("isBlock") == false && m_Animator.GetBool("isAttack") == false && m_Animator.GetBool("isJump") == false)
+        else if (m_Animator.GetBool("isBlock") == false && m_Animator.GetBool("isAttack") == false && m_Animator.GetBool("isJump") == false)
         {
             m_Animator.SetInteger("idle", character.characterNumber);
             m_Animator.SetBool("isIdle", true);
@@ -337,14 +353,16 @@ public class ChararacterControllerScript : MonoBehaviour
 
     void Jump()
     {
-        
-        if (A && (isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor) && rb.velocity.y==0 && !blocking)
+
+        if (A && (isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor) && rb.velocity.y == 0 && !blocking)
         {
             //spriteRend.color = Color.red;
-         
+
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            particleJump.Play();
+            JumpSound.Play();
         }
-        
+
     }
 
     void CheckIfGrounded()
@@ -352,7 +370,7 @@ public class ChararacterControllerScript : MonoBehaviour
         Collider2D colliders = Physics2D.OverlapCircle(isGroundedChecker.position, checkGroundRadius, groundLayer);
         if (colliders != null)
         {
-          
+
             isGrounded = true;
         }
         else
@@ -375,21 +393,22 @@ public class ChararacterControllerScript : MonoBehaviour
         }
         else if (rb.velocity.y > 0 && !A)
         {
-            
+
             rb.velocity += Vector2.up * Physics2D.gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
         else if (rb.velocity.y > 0)
         {
             m_Animator.SetBool("isJump", true);
             m_Animator.SetInteger("jump", character.characterNumber);
-        }else m_Animator.SetBool("isJump", false);
+        }
+        else m_Animator.SetBool("isJump", false);
 
         if (m_Animator.GetBool("isJump") == true)
         {
             m_Animator.SetBool("isIdle", false);
             m_Animator.SetBool("isRun", false);
         }
-         
+
     }
 
     void Turn(int dir)
@@ -415,18 +434,20 @@ public class ChararacterControllerScript : MonoBehaviour
 
             if (character.type == 0)
             {
+                DashSound.Play();
                 if (HorizontalInput == 0 && VerticalInput == 0) HorizontalInput = transform.localScale.x;
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + new Vector3(transform.localScale.x * 0.55f, 0), 1.1f, LayerMask.GetMask("Player"));
                 //RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, new Vector2(HorizontalInput, VerticalInput), 1.5f, LayerMask.GetMask("Player"));
                 if (colliders.Length > 1)
                 {
+                    PunchSound.Play();
                     enemy.Hurt(character.attack);
                 }
             }
             else if (character.type == 1)
             {
                 if (HorizontalInput == 0 && VerticalInput == 0) HorizontalInput = transform.localScale.x;
-             // gameObject A=   rangeAttack.GetComponent<SpriteRenderer>;
+                // gameObject A=   rangeAttack.GetComponent<SpriteRenderer>;
                 GameObject proj = Instantiate(rangeAttack, transform.position, Quaternion.Euler(0, 0, -90 + Mathf.Rad2Deg * Mathf.Atan2(VerticalInput, HorizontalInput)));
                 proj.GetComponent<SpriteRenderer>().sprite = character.attackSprite;
                 proj.name = character.attack.ToString();
@@ -434,6 +455,7 @@ public class ChararacterControllerScript : MonoBehaviour
                 Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
                 rb.AddForce(proj.transform.up * 9, ForceMode2D.Impulse);
                 Destroy(proj, 5f);
+                LightningSound.Play();
 
             }
             else if (character.type == 2)
@@ -445,13 +467,13 @@ public class ChararacterControllerScript : MonoBehaviour
                 if (HorizontalInput == 0 && VerticalInput == 0) HorizontalInput = transform.localScale.x;
                 rb.velocity = new Vector2(HorizontalInput, VerticalInput * 0.7f) * 30;
 
-
+                DashSound.Play();
             }
 
             meleeStore--;
         }
-       // m_Animator.SetBool("isAttack", false);
-        
+        // m_Animator.SetBool("isAttack", false);
+
 
     }
 
@@ -463,14 +485,15 @@ public class ChararacterControllerScript : MonoBehaviour
 
         float xChange = (transform.position.x - start.x);
         float yChange = (transform.position.y - start.y);
-        float angle = Mathf.Rad2Deg*Mathf.Atan2(yChange,xChange);
+        float angle = Mathf.Rad2Deg * Mathf.Atan2(yChange, xChange);
         float dist = Vector2.Distance(transform.position, start);
         Vector2 dir = new Vector2(0, 0);
 
-        RaycastHit2D[] colliders = Physics2D.BoxCastAll(start, new Vector2(1,1), angle, new Vector2(xChange,yChange),dist, LayerMask.GetMask("Player"));
+        RaycastHit2D[] colliders = Physics2D.BoxCastAll(start, new Vector2(1, 1), angle, new Vector2(xChange, yChange), dist, LayerMask.GetMask("Player"));
 
         if (colliders.Length > 1)
         {
+            PunchSound.Play();
             enemy.Hurt(character.attack);
         }
         dashOverride = false;
@@ -479,13 +502,15 @@ public class ChararacterControllerScript : MonoBehaviour
 
     void Switch()
     {
-        if ((P || N ) && teamController.deadCount < 2 && !switchWait)//&& !switchCooling)
+        if ((P || N) && teamController.deadCount < 2 && !switchWait)//&& !switchCooling)
         {
             int dir = 0;
             if (P) dir = -1;
             else if (N) dir = 1;
-          //  character = GetComponent<Characters>();
+            //  character = GetComponent<Characters>();
             teamController.NewChar(dir, false);
+            particleSwitch.Play();
+            SwapSound.Play();
         }
 
     }
@@ -527,7 +552,7 @@ public class ChararacterControllerScript : MonoBehaviour
 
     public void Hurt(int dmg)
     {
-        
+
         if (blocking)
         {
             float newDmg = dmg * (1 - character.block);
@@ -538,9 +563,9 @@ public class ChararacterControllerScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Proj1" || collision.tag == "Proj2")
+        if (collision.tag == "Proj1" || collision.tag == "Proj2")
         {
-            if(collision.tag != projTag)
+            if (collision.tag != projTag)
             {
                 if (dashOverride) return;
                 Hurt(int.Parse(collision.name));
@@ -558,6 +583,6 @@ public class ChararacterControllerScript : MonoBehaviour
 
         yield return new WaitForSeconds(0.3f);
         m_Animator.SetBool("isAttack", false);
-       // m_Animator.SetBool("isIdle", true);
+        // m_Animator.SetBool("isIdle", true);
     }
-    }
+}
