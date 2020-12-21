@@ -70,6 +70,15 @@ public class ChararacterControllerScript : MonoBehaviour
 
     public ParticleSystem particleWalk, particleJump, particleSwitch;
 
+
+    // sounds
+    public AudioSource JumpSound;
+    public AudioSource PunchSound;
+    public AudioSource LightningSound;
+    public AudioSource BlockSound;
+    public AudioSource SwapSound;
+    public AudioSource DashSound;
+
     private void OnEnable()
     {
 
@@ -350,6 +359,7 @@ public class ChararacterControllerScript : MonoBehaviour
          
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             particleJump.Play();
+            JumpSound.Play();
         }
         
     }
@@ -422,11 +432,13 @@ public class ChararacterControllerScript : MonoBehaviour
 
             if (character.type == 0)
             {
+                DashSound.Play();
                 if (HorizontalInput == 0 && VerticalInput == 0) HorizontalInput = transform.localScale.x;
                 Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position + new Vector3(transform.localScale.x * 0.55f, 0), 1.1f, LayerMask.GetMask("Player"));
                 //RaycastHit2D[] hit = Physics2D.RaycastAll(transform.position, new Vector2(HorizontalInput, VerticalInput), 1.5f, LayerMask.GetMask("Player"));
                 if (colliders.Length > 1)
                 {
+                    PunchSound.Play();
                     enemy.Hurt(character.attack);
                 }
             }
@@ -441,6 +453,7 @@ public class ChararacterControllerScript : MonoBehaviour
                 Rigidbody2D rb = proj.GetComponent<Rigidbody2D>();
                 rb.AddForce(proj.transform.up * 9, ForceMode2D.Impulse);
                 Destroy(proj, 5f);
+                LightningSound.Play();
 
             }
             else if (character.type == 2)
@@ -452,7 +465,7 @@ public class ChararacterControllerScript : MonoBehaviour
                 if (HorizontalInput == 0 && VerticalInput == 0) HorizontalInput = transform.localScale.x;
                 rb.velocity = new Vector2(HorizontalInput, VerticalInput * 0.7f) * 30;
 
-
+                DashSound.Play();
             }
 
             meleeStore--;
@@ -468,8 +481,8 @@ public class ChararacterControllerScript : MonoBehaviour
         //RaycastHit2D[] colliders = Physics2D.LinecastAll(start, transform.position, LayerMask.GetMask("Player"));
 
 
-        float xChange = Mathf.Abs(transform.position.x - start.x);
-        float yChange = Mathf.Abs(transform.position.y - start.y);
+        float xChange = (transform.position.x - start.x);
+        float yChange = (transform.position.y - start.y);
         float angle = Mathf.Rad2Deg*Mathf.Atan2(yChange,xChange);
         float dist = Vector2.Distance(transform.position, start);
         Vector2 dir = new Vector2(0, 0);
@@ -478,6 +491,7 @@ public class ChararacterControllerScript : MonoBehaviour
 
         if (colliders.Length > 1)
         {
+            PunchSound.Play();
             enemy.Hurt(character.attack);
         }
         dashOverride = false;
@@ -494,6 +508,7 @@ public class ChararacterControllerScript : MonoBehaviour
           //  character = GetComponent<Characters>();
             teamController.NewChar(dir, false);
             particleSwitch.Play();
+            SwapSound.Play();
         }
 
     }
@@ -511,7 +526,7 @@ public class ChararacterControllerScript : MonoBehaviour
             m_Animator.SetBool("isIdle", false);
             m_Animator.SetBool("isAttack", false);
             m_Animator.SetBool("isRun", false);
-
+            
             //blockWait = false;
             //blockWait = false;
             //lastFrameBlock = blocking;
