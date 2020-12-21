@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 4b77c6b148a366c4ba573feb2ad27c39
+guid: 0f249f2886619fa479a2398a6989e3f7
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6888652306180556572
-    second: P1_fighters_0
+      213: -6660032921144914693
+    second: P2_fighters_0
   - first:
-      213: 5243585781120676817
-    second: P1_fighters_1
+      213: -6252165652608760109
+    second: P2_fighters_1
   - first:
-      213: -7452879994801136913
-    second: P1_fighters_2
+      213: 2480090390760463461
+    second: P2_fighters_2
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -108,7 +108,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: P1_fighters_0
+      name: P2_fighters_0
       rect:
         serializedVersion: 2
         x: 2
@@ -122,14 +122,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c17411b56c8699f50800000000000000
-      internalID: 6888652306180556572
+      spriteID: bfc00c6385fc293a0800000000000000
+      internalID: -6660032921144914693
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P1_fighters_1
+      name: P2_fighters_1
       rect:
         serializedVersion: 2
         x: 63
@@ -143,14 +143,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1d3bcf87c75f4c840800000000000000
-      internalID: 5243585781120676817
+      spriteID: 3d64b5fd678db39a0800000000000000
+      internalID: -6252165652608760109
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: P1_fighters_2
+      name: P2_fighters_2
       rect:
         serializedVersion: 2
         x: 128
@@ -164,8 +164,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fea534cb12d029890800000000000000
-      internalID: -7452879994801136913
+      spriteID: 56c1320021d0b6220800000000000000
+      internalID: 2480090390760463461
       vertices: []
       indices: 
       edges: []
